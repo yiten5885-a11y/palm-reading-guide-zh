@@ -1,0 +1,64 @@
+{
+  "guide_title": "你的手相解析指南",
+  "hand_label": "右手 掌心正面 镜像状态未知",
+  "image_quality": "中",
+  "coverage_note": "指尖至腕横纹完整；小指侧略有反光",
+  "overall": [
+    {
+      "label": "掌面比例",
+      "observation": "掌面视觉上略偏长，透视影响较小。",
+      "confidence": "中",
+      "tradition": "部分手相流派会把修长比例作为感受与联想主题的象征。",
+      "reflection": "哪些环境最容易激发你的观察力？",
+      "limitation": "这是合成文本示例，不对应真实手掌。"
+    },
+    {
+      "label": "手指轮廓",
+      "observation": "手指视觉上较细，指尖轮廓偏圆。",
+      "confidence": "中",
+      "tradition": "传统叙事有时借圆润轮廓谈适应与沟通主题。",
+      "reflection": "你在交流中更重视明确结论，还是保留余地？",
+      "limitation": "照片角度会影响比例判断。"
+    }
+  ],
+  "major_lines": [
+    {
+      "name": "生命线",
+      "observation": "可见一条环绕拇指根部的弧线，中段受反光影响。",
+      "confidence": "中",
+      "tradition": "部分流派会借弧幅谈生活投入的范围。",
+      "reflection": "你更喜欢多种体验，还是长期专注少数重点？",
+      "limitation": "中段连续性不可辨。"
+    },
+    {
+      "name": "智慧线",
+      "observation": "掌心中部横向纹路较清楚，整体略向下。",
+      "confidence": "中",
+      "tradition": "传统叙事有时借下斜走向谈联想式思考。",
+      "reflection": "你解决问题时更常依赖拆解，还是先形成整体图景？",
+      "limitation": "末端被裁切。"
+    },
+    {
+      "name": "感情线",
+      "observation": "指根下方横纹可见，局部分支不清。",
+      "confidence": "低",
+      "tradition": "这里只介绍传统名称，不延伸到现实关系判断。",
+      "reflection": "你通常如何表达在意和边界？",
+      "limitation": "小指侧反光明显。"
+    }
+  ],
+  "minor_lines": [
+    {
+      "name": "命运线",
+      "observation": "掌心纵向细纹不可辨。",
+      "confidence": "不可辨",
+      "tradition": "本次只保留术语位置说明，不展开个体化解释。",
+      "reflection": "",
+      "limitation": "分辨率不足。"
+    }
+  ],
+  "reflection_questions": [
+    "哪些现实经历最能支持或反驳上面的传统联想？",
+    "你希望保留哪一种习惯，又想调整哪一种？"
+  ]
+}

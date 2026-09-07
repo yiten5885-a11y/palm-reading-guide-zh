@@ -1,63 +1,86 @@
-# 素掌纪｜Palm Editorial
+# 素掌纪 Palm Editorial
 
-> 高端极简风「手相解析指南」生成 Skill —— 把一张手掌照片，变成一份品牌白皮书质感的图文解读。
+`palm-reading-guide-zh` 是一个中文掌纹文化观察 Skill。它把用户自愿提供的手掌照片整理为“可见观察、传统说法、反思问题”三层内容，并可生成高端极简的自包含 HTML 报告；在宿主环境具备浏览器排版或图像渲染能力时，也会指导 Agent 另行制作中文图卡。
 
-`palm-reading-guide-zh` 是面向 OpenClaw / AutoClaw / Claude Code 类 Agent 的中文 Skill。它把「手相解析指南」这类需求蒸馏成可复用工作流：**读图固化六项手征 → 词典映射生成克制文案 → 双通道交付（HTML 白皮书 + AI 生图）**，并内置一张可直接使用的黑白线稿手掌示意图（纯 SVG，零外部资源）。
+本项目不把掌纹包装成科学测量、人格测验或命运预测。生命线不代表寿命，智慧线不代表智力或心理状态，感情线不证明忠诚或关系结局；Skill 也不会依据手掌给出医疗、法律、投资、身份或敏感属性结论。
 
-展示名 **素掌纪｜Palm Editorial**；Skill 技术 ID 为 `palm-reading-guide-zh`。
+## 核心能力
 
-## 为什么默认走 HTML 白皮书路线？
-
-文生图模型直出长段中文的乱码率极高。所以本 Skill 的核心取舍是：
-
-- **图形交给生图模型做减法** —— 只画形状与线（黑白线稿、零文字依赖）
-- **文字交给 HTML 做精确排版** —— 长文案零乱码风险，版式完全可控
-
-这正是"更符合中文社区用户的排版"的关键：信息密度在 HTML 层，视觉气质在图像层，两者各司其职。
-
-## 目录结构
-
-```
-├── LICENSE
-├── README.md
-└── skills/
-    └── palm-reading-guide-zh/
-        ├── SKILL.md                          # 四步工作流
-        ├── references/
-        │   ├── palmistry-dictionary.md       # 手型/八丘/主线/辅助线 → 措辞映射词典
-        │   └── image-prompt-template.md      # 生图提示词模板（整页卡 / 黑白线稿）
-        └── assets/
-            └── report-template.html          # 自包含 HTML 白皮书模板（含内置 SVG 示意图）
-```
+- 先检查照片覆盖、焦点、反光、透视和镜像不确定性，再决定能否个体化观察。
+- 每个特征都记录可见证据、视觉置信度和观察限制；看不清就写“不可辨”。
+- 把中性观察、传统手相称呼、象征性联想与自我反思问题分开。
+- 按请求交付对话解读或 HTML 白皮书；用户要 PNG 时，必须实际渲染并逐张核对尺寸，缺少渲染能力就明确标为阻塞。
+- 使用确定性 HTML/CSS 排版长段中文，AI 插画只承担通用线稿或装饰视觉。
+- 不收集姓名、生日等无关信息，不上传或公开真实掌纹照片。
 
 ## 安装
 
+### Codex
+
 ```bash
-cp -r skills/palm-reading-guide-zh ~/.openclaw-autoclaw/skills/
+cp -R skills/palm-reading-guide-zh ~/.codex/skills/
 ```
 
-## 使用示例
+重启或刷新 Skill 列表后，可显式调用：
 
-- 「上传了手掌照片，帮我生成一份高端极简风格的手相解析指南」
-- 「根据这张手掌照片做一张小红书风格的看手相图卡，要白底细线条圆角卡片」
-- 「给这份掌纹分析配一个黑白线稿示意图，标出三大主线」
+```text
+$palm-reading-guide-zh 请根据我上传的手掌照片，做一份观察与传统说法分开的中文娱乐性指南。
+```
 
-## 设计规范摘要
+### 其他支持 SKILL.md 的 Agent
 
-| 维度 | 规范 |
-|------|------|
-| 版式 | 竖版 3:4（小红书/公众号友好）；章节 `01/02/03` 数字导航 |
-| 色彩 | 纯白底 `#FFFFFF`、墨黑 `#111`、辅灰 `#666/#999`，至多一种点缀色 |
-| 元素 | ≤1px 细线条、12–16px 圆角卡片、充足留白 |
-| 字体 | 标题衬线（宋体/Noto Serif SC）、正文细黑体 |
-| 文案 | 简洁、有质感、略带高级感；每卡要点 ≤3 条、每条 ≤24 字 |
+把 `skills/palm-reading-guide-zh` 整个目录复制到该 Agent 的用户级 Skills 目录。不要只复制 `SKILL.md`；报告模板、引用资料和生成脚本都属于完整包。
 
-## 合规边界
+## 目录
 
-- 全部解读均为传统掌纹文化的倾向性描述，强制携带 `✳ 内容仅供文化与娱乐参考` 标注
-- 词典内置禁用词清单（注定 / 凶 / 克 / 必然 等），命中即返工
-- 只处理使用者本人主动提供的照片；不可辨区域如实标注，不脑充实测
+```text
+skills/palm-reading-guide-zh/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+├── assets/
+│   └── report-template.html
+├── references/
+│   ├── image-prompt-template.md
+│   ├── palmistry-dictionary.md
+│   ├── report-controlled-vocabulary.json
+│   └── report-data-schema.md
+├── scripts/
+│   └── build_report.py
+└── tests/
+    ├── fixtures/
+    │   └── sample-report.json
+    ├── test_build_report.py
+    └── test_package_contract.py
+```
+
+## 报告生成
+
+先按 [报告数据契约](skills/palm-reading-guide-zh/references/report-data-schema.md) 准备 JSON，再运行：
+
+```bash
+python3 skills/palm-reading-guide-zh/scripts/build_report.py report-data.json report.html
+```
+
+生成器只使用 Python 标准库，会校验字段、闭集报告词表和 Unicode 字符，阻断自定义姓名、地点、高风险及确定性断言，要求三大主线各出现一次，转义动态 HTML，并锁定经过审计的内置模板、受控词表及不可删除的民俗娱乐性质说明。输入 JSON 与输出 HTML 必须放在同一目录；输出名必须是尚不存在的 `.html` 文件，生成器不会覆盖已有文件。
+
+生成器只产出响应式长页 HTML，不包含 PNG 渲染器；PNG 需要宿主环境另行提供浏览器排版或图像渲染能力。它也不负责判断文案是否真的有照片证据；这一步由 Skill 的观察门禁和最终人工或 Agent 核对完成。
+
+## 本地验证
+
+```bash
+python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/palm-reading-guide-zh
+python3 -m unittest discover -s skills/palm-reading-guide-zh/tests -v
+python3 -m py_compile skills/palm-reading-guide-zh/scripts/build_report.py
+git diff --check
+```
+
+结构校验和单元测试只能证明包结构与生成器行为；它们不等于个体化掌纹回复已经通过安全与照片证据审查。
+
+## 隐私与素材
+
+仓库只包含新写的通用工作流、文本、代码和抽象 SVG 示意图。不要把真实手掌照片、原始来源文档、EXIF、图像哈希、个人资料或未经授权的版式素材提交到 GitHub。测试数据必须是纯文本合成示例。
 
 ## 许可
 
-MIT License（见 [LICENSE](LICENSE)）。免费公开使用：可自由使用、修改与再分发，需保留版权声明。
+[MIT License](LICENSE)
