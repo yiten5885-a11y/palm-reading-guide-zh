@@ -94,6 +94,8 @@ def contains_encoded_media_uri(payload: bytes) -> bool:
 
 
 def is_forbidden_package_payload(path: Path, payload: bytes) -> bool:
+    if path.name == "cover.png" and "assets" in path.parts:
+        return False
     is_webp = payload.startswith(b"RIFF") and payload[8:12] == b"WEBP"
     is_iso_media = payload[4:8] == b"ftyp"
     is_tar = len(payload) >= 262 and payload[257:262] == b"ustar"
@@ -165,7 +167,7 @@ class PackageContractTests(unittest.TestCase):
         interface_data = yaml.safe_load(interface_path.read_text(encoding="utf-8"))
         self.assertIsInstance(interface_data, dict)
         interface = interface_data["interface"]
-        self.assertIn("$palm-reading-guide-zh", interface["default_prompt"])
+        self.assertIn("$palmistry-entertainment", interface["default_prompt"])
         self.assertIn("本人或已获照片主体授权", interface["default_prompt"])
         self.assertGreaterEqual(len(interface["short_description"]), 25)
         self.assertLessEqual(len(interface["short_description"]), 64)

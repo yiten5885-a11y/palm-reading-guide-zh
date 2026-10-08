@@ -1,6 +1,6 @@
 # 素掌纪 Palm Editorial
 
-`palm-reading-guide-zh` 是一个中文掌纹文化观察 Skill。它把用户自愿提供的手掌照片整理为“可见观察、传统说法、反思问题”三层内容，并可生成高端极简的自包含 HTML 报告；在宿主环境具备浏览器排版或图像渲染能力时，也会指导 Agent 另行制作中文图卡。
+`palmistry-entertainment` 是一个中文掌纹文化观察 Skill。它把用户自愿提供的手掌照片整理为“可见观察、传统说法、反思问题”三层内容，并可生成高端极简的自包含 HTML 报告；在宿主环境具备浏览器排版或图像渲染能力时，也会指导 Agent 另行制作中文图卡。
 
 本项目不把掌纹包装成科学测量、人格测验或命运预测。生命线不代表寿命，智慧线不代表智力或心理状态，感情线不证明忠诚或关系结局；Skill 也不会依据手掌给出医疗、法律、投资、身份或敏感属性结论。
 
@@ -18,13 +18,13 @@
 ### Codex
 
 ```bash
-cp -R skills/palm-reading-guide-zh ~/.codex/skills/
+cp -R skills/palm-reading-guide-zh ~/.codex/skills/palmistry-entertainment/
 ```
 
 重启或刷新 Skill 列表后，可显式调用：
 
 ```text
-$palm-reading-guide-zh 请根据我上传的手掌照片，做一份观察与传统说法分开的中文娱乐性指南。
+$palmistry-entertainment 请根据我上传的手掌照片，做一份观察与传统说法分开的中文娱乐性指南。
 ```
 
 ### 其他支持 SKILL.md 的 Agent

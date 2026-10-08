@@ -1,7 +1,7 @@
 interface:
   display_name: "素掌纪 Palm Editorial"
   short_description: "把手掌照片整理为克制安全的中文民俗观察与视觉报告流程"
-  default_prompt: "使用 $palm-reading-guide-zh 分析我本人或已获照片主体授权的手掌照片，并制作一份观察与传统说法分开的中文娱乐性指南。"
+  default_prompt: "使用 $palmistry-entertainment 分析我本人或已获照片主体授权的手掌照片，并制作一份观察与传统说法分开的中文娱乐性指南。"
 
 policy:
   allow_implicit_invocation: true
