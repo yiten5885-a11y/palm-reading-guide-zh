@@ -139,7 +139,9 @@ class PackageContractTests(unittest.TestCase):
     def test_package_contains_no_real_image_or_source_document(self) -> None:
         offenders: list[str] = []
         for path in SKILL_ROOT.rglob("*"):
-            if path.is_symlink() or path.name == ".DS_Store" or "__pycache__" in path.parts:
+            if "__pycache__" in path.parts:
+                continue
+            if path.is_symlink() or path.name == ".DS_Store":
                 offenders.append(path.relative_to(SKILL_ROOT).as_posix())
                 continue
             if not path.is_file():
