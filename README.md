@@ -2,6 +2,8 @@
 
 `palmistry-entertainment` 是一个中文掌纹文化观察 Skill。它把用户自愿提供的手掌照片整理为“可见观察、传统说法、反思问题”三层内容，并可生成高端极简的自包含 HTML 报告；在宿主环境具备浏览器排版或图像渲染能力时，也会指导 Agent 另行制作中文图卡。
 
+![Palmistry Entertainment cover](skills/palm-reading-guide-zh/assets/cover.png)
+
 本项目不把掌纹包装成科学测量、人格测验或命运预测。生命线不代表寿命，智慧线不代表智力或心理状态，感情线不证明忠诚或关系结局；Skill 也不会依据手掌给出医疗、法律、投资、身份或敏感属性结论。
 
 ## 核心能力

@@ -1,5 +1,7 @@
 # Palmistry Entertainment
 
+![Palmistry Entertainment cover](assets/cover.png)
+
 手相民俗娱乐 Skill。它只把可见观察、传统称谓和自我反思问题分开整理，不把掌纹包装成科学测量、人格事实或命运预测。
 
 ## 使用方法
