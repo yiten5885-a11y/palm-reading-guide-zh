@@ -1,0 +1,20 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  package-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependency
+        run: python3 -m pip install --disable-pip-version-check pyyaml
+      - name: Run package tests
+        run: python3 -m unittest discover -s skills/palm-reading-guide-zh/tests -v
+      - name: Compile scripts
+        run: python3 -m py_compile skills/palm-reading-guide-zh/scripts/build_report.py
